@@ -1,0 +1,218 @@
+
+* {
+    padding: 0; 
+    margin: 0; 
+}
+
+.formContainer01 {
+    padding: 25px; 
+    background-color: rgb(65, 65, 65);
+    width: 400px;
+    height: 200px; 
+    margin: 10px; 
+}
+
+.formContainer02 {
+    padding: 25px; 
+    background-color: white; 
+    border: 20px solid rgb(65, 65, 65);
+    width: 900px;
+    /* height: 400px;  */
+    margin: 10px; 
+    display: flex; 
+}
+
+.formContainer03 {
+    display: flex; 
+    justify-content: space-around;
+    padding: 25px; 
+    background-color: rgb(65, 65, 65);
+    width: 1200px;
+    /* height: 100px;  */
+    margin: 10px; 
+}
+
+
+.formSelectSameLine {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+h1 {
+    color: navy; 
+    font-weight:900; 
+}
+
+h2 {
+    color: goldenrod; 
+    font-weight:900; 
+}
+
+.formLabels {
+    font-size: larger;
+    color: white; 
+    /* margin: 5px;  */
+}
+
+.inputTextOneLiner {
+    padding: 3px; 
+}
+
+.inputTextArea {
+    width: 300px;
+    height: 200px; 
+}
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#header {
+    background-color: rgb(170, 218, 226); 
+    width: 100%;
+    height: 100px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 20px; */
+}
+#container {
+    background-color: white; 
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* border: red solid 1px;  */
+    margin-bottom: 20px; 
+}
+
+.row001 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vertForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px; 
+}
+
+#row01 {
+    background-color: grey; 
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+#checkerBoard {
+    display: flex;
+    justify-content: center;
+}
+
+
+.aquaBox {
+    background-color: aqua; 
+    border: black solid 3px;
+    width:100px;
+    height: 100px;
+    border-radius: 25%;
+    /* margin: 20px; */
+}
+
+.purpleBox {
+    border: black solid 3px;
+    background-color: purple; 
+    width:100px;
+    height: 100px;
+}
+
+.vert {
+    display: flex;
+    flex-direction: column;
+}
+
+.horiz {
+    display: flex;
+    flex-direction: row;
+}
+.box1 {
+    border: black solid 3px;
+    background-color: red;
+    width:100px;
+    height: 100px;
+}
+
+.box2 {
+    border: black solid 3px;
+    background-color: black; 
+    width:100px;
+    height: 100px;
+}
+
+.validation {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 75%; 
+    background-color: lightcoral;
+    
+}
+
+.validationText {
+    font-size: 30px; 
+}
+
+.affirmativeValStyle {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 75%; 
+    background-color: lightblue; 
+    padding: 5px;
+}
+
+.negativeValStyle {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 75%; 
+    background-color: lightcoral; 
+    padding: 5px;
+}
+
+.horizBlock {
+    flex: 1; 
+    margin: 10px; 
+}
+.studentTbl {
+    table-layout: auto;
+}
+
+.studentTblHdr, .studentTblData {
+    font-size: 15px;
+    font-family: Arial, Verdana, sans-serif;
+    padding: 5px; 
+    text-align: left;
+}
+
+.studentTblHdr {
+    font-weight: bolder;
+    background-color: dimgray;
+    color: white; 
+    width: 25px;
+}
+
+.studentTblData {
+    background-color: lightgray;
+    color: black; 
+    width: 200px;
+}

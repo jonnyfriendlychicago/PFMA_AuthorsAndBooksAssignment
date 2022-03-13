@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors And Books</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div id=header> 
+    <h1>Authors And Books >> Authors</h1>
+    </div>
+
+    <div id="container">
+        <div class="row001"> 
+            <div class="formContainer02">
+                <div class="horizBlock">   
+                    <div class="vertForm">
+                        <h2>Add an Author</h2>
+                        <form class="vertForm" action="/createAuthor" method="POST">
+                            <div class="formSelectSameLine">
+                                <label for="frm_authorName">Author Name:</label>
+                                <input type="text" name="frm_authorName">
+                            </div> 
+                            <input class="btn btn-secondary" type="submit" value="Save New Author">
+                        </form> 
+                    </div>
+                </div>  
+                <div class="horizBlock"> 
+                    <h2>All Authors</h2>
+                    <table class="studentTbl">  
+                        {% for row in display_allAuthor %}
+                        <tr> 
+                            <!-- <td class="studentTblData"> {{row.dojoName}}</td>
+                            <td class="studentTblData"><a href="/dojoProfile/{{row.id}}">View Dojo Profile</a> -->
+                            <td class="studentTblData"><a href="/authorProfile/{{row.id}}">{{row.authorName}}</a>
+                        </tr>
+                        {% endfor %}    
+                    </table>
+                </div>
+                <div class="horizBlock">     
+                    <!-- <p><a href="/addNewNinja">Add Book</a></p> -->
+                    <p><a href="/books">Books</a></p>
+                    <!-- <p><a href="/">Add Book</a></p> -->
+                </div>
+                
+            </div>
+        </div>   
+
+        
+        <!-- <a href="/addNewDojo" class="btn btn-secondary">Add New Dojo</a> gotta remember here that the /addNewUser is NOT a reg'ole url; it's a route from the PY server -->
+<!-- 
+        <div class="row001"> 
+                <div class="vertForm">
+                    <h2>Add a User</h2>
+                    <form class="vertForm" action="/create_user" method="POST">
+                        <label for="frm_firstName">First Name:</label>
+                        <input type="text" name="frm_firstName">
+
+                        <label for="frm_lastName">Last Name:</label>
+                        <input type="text" name="frm_lastName">
+
+                        <label for="frm_email">email:</label>
+                        <input type="text" name="frm_email">
+
+                        <input type="submit" value="Add Friend">
+                    </form> 
+                </div>
+                 -->
+<!-- 
+                <div class="formContainer01">
+                    <p class="formLabels">Farmville</p>
+                    <form action="/processMoney" method="post">
+                        <input type="hidden" name="which_form" value="transType1">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Get $$$</button>
+                        <p class="formLabels">Adds 20</p>
+                    </form>
+                </div>
+                 -->
+<!-- 
+            <div class="formContainer01">
+                <p class="formLabels">Cavern</p>
+                <form action="/processMoney" method="post">
+                    <input type="hidden" name="which_form" value="transType2">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Get $$$</button>
+                    <p class="formLabels">Adds 40</p>
+                </form>
+            </div>
+
+            <div class="formContainer01">
+                <form action="/processMoney" method="post">
+                    <input type="hidden" name="which_form" value="transTypeReset">
+                    <button class="btn btn-danger" type="submit">Start Over</button>
+                </form>
+            </div>
+             -->
+<!--         
+            <div class="formContainer01">
+                <p class="formLabels">Activity Log</p>
+                {% for i in session.transactionsDetailsList: %}
+                <p class="formLabels">
+                {{i}}
+                </p>
+                {%endfor%}   
+            </div> -->
+
+            <!-- <div class="formContainer01">
+                <table class="studentTbl">  
+                    <tr>
+                        <th class="studentTblHdr">Location</th>
+                        <th class="studentTblHdr">Amount</th>
+                    </tr>
+                    {% for s in session.StudentInfoList %}
+                    <tr> 
+                        <td class="studentTblData">{{s['loc']}}</td>
+                        <td class="studentTblData">{{s['amt']}}</td>
+                    </tr>
+                    {% endfor %}    
+                </table>
+            </div>   -->
+
+        </div> 
+<!-- 
+        <div class="row001"> 
+            <div class="formContainer01"> 
+                <h2>Dojo Survey</h2>
+                <form action="/submissionSuccess" method="post">
+                    <div class="formSelectSameLine">
+                        <label class="formLabels" for="yourName">Your Name:</label>
+                        <input class="inputTextOneLiner" type="text" name="yourName" placeholder="type it here, man" value="">
+                    </div>
+                    <div class="formSelectSameLine">
+                        <p class="formLabels">Dojo Location:</p>
+                        <select name="dojoLocation"> 
+                            <option value="San Jose, CA">San Jose, CA</option>
+                            <option value="Chicago, IL">Chicago, IL</option>
+                            <option value="New York, NY">New York, NY</option>
+                        </select>
+                    </div>
+                    
+                    <div class="formSelectSameLine">
+                        <p class="formLabels">Favorite Language:</p>
+                        <select name="favoriteLanguage"> 
+                            <option value="Python">Python</option>
+                            <option value="Java">Java</option>
+                            <option value=".net">.net</option>
+                        </select>
+                    </div>
+
+                    <div class="formSelectSameLine">
+                        <p class="formLabels">Favorite Dojo TA(s):</p>                        
+                        <input type="checkbox" name="favoriteDojoTa" value="Mel-B"/>
+                        <label class="formLabels">Mel-B</label>
+                        <input type="checkbox" name="favoriteDojoTa" value="Brandon-C"/>
+                        <label class="formLabels">Brandon-C</label>
+                    </div> 
+                    
+                    <p class="formLabels">Comment (optional):</p>
+                    <textarea class="inputTextArea" name="comment" placeholder="Enter comments..."></textarea>  
+                    <input class="inputTextOneLiner" type="text" name="yourName" placeholder="type it here, man" value=""> 
+                    
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+-->
+    </div>
+</body>
+</html>
+
