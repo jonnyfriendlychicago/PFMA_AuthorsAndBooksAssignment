@@ -46,10 +46,9 @@ def createAuthorFavBook(author_id):
         "clr_author_id": author_id 
         }
     # dojo_id = data.clr_dojo_id
-    id = Author_cls.saveFaveOfAuthor(data) # creates variable... 'id' ... = that we'll use in next line (represents the ID of newly created record.... oh, and runs the "save" method from server.py)
-    # return redirect('/DojoProfile/' + str(id)) 
-    return redirect('/') 
-    # return redirect(f"/dojoProfile/{data['clr_dojo_id']}")
+    id = Author_cls.saveFaveOfAuthor(data) 
+    # return redirect(f"/authorProfile/{data['clr_author_id']}") # this works
+    return redirect(f"/authorProfile/{author_id}") # this works much cleaner!
 
 # """ route engaged by the 'edit' button on the DojoProfile.html page"""
 # @app.route('/DojoProfile/<int:id>/edit')

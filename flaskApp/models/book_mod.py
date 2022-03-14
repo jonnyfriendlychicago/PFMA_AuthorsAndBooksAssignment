@@ -19,6 +19,16 @@ class Book_cls:
         return bookList
 
     @classmethod 
+    def get_allBookNotFavByThisAuthor(cls):
+        q = "select * from book b where b.id not in  (select f.book_id from favorite f where f.author_id = 2); "
+        # q = "SELECT * FROM book b left join favorite f on b.id = f.book_id where f.author_id != %(clr_id)s;"
+        rez = connectToMySQL('authorBook_sch').query_db(q) 
+        bookListNew = [] 
+        for rec in rez:
+            bookListNew.append(cls(rec))
+        return bookListNew
+
+    @classmethod 
     def save(cls, data ):
         q = "INSERT INTO book (bookTitle, pageCount, createdAt, updatedAt) VALUES ( %(clr_bookTitle)s , %(clr_pageCount)s,  NOW() , NOW() );"
         return connectToMySQL('authorBook_sch').query_db(q, data )

@@ -7,7 +7,8 @@ from flaskApp.models.book_mod import Book_cls
 @app.route('/books')
 def bookHome():
     allBook = Book_cls.getAllBook()
-    return render_template("books.html", display_allBook = allBook)
+    allBookNotFavByThisAuthor = Book_cls.get_allBookNotFavByThisAuthor()
+    return render_template("books.html", display_allBook = allBook, display_allBookNotFavByThisAuthor = allBookNotFavByThisAuthor)
 
 @app.route('/createBook', methods=["POST"])
 def createBook():

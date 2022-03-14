@@ -8,7 +8,6 @@ class Author_cls:
         self.authorName = data['authorName']
         self.authorFavBookList = [] # needs work in sections below
     
-    """ get all book records from db"""
     @classmethod 
     def getAllAuthor(cls):
         q = "SELECT * FROM author;"

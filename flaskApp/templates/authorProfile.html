@@ -24,7 +24,6 @@
 
         <div class="formContainer02">
             <div class="horizBlock"> 
-                <!-- <h1>DojoName: {{display_allAuthorFavBook.dojoName}}</h1> -->
                 <h2>This Author's FavBooks</h2>
                 <table class="studentTbl">  
                     <tr>
@@ -48,6 +47,7 @@
                             <label for="frm_book_id">Book:</label>
                             <select name="frm_book_id">
                                 {% for rec in display_allBook %}
+                                <!-- display_allBookNotFavByThisAuthor -->
                                 <option value={{rec.id}}> {{rec.bookTitle}} </option>
                                 {% endfor %}
                             </select>
