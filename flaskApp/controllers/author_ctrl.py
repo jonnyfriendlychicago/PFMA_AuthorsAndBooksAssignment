@@ -14,11 +14,10 @@ def authorHome():
 """ Route invoked on the Add New Dojo page """
 @app.route('/createAuthor', methods=["POST"])
 def createAuthor():
-    data = { # this creates cleared variables, containing cleansed incoming data from the form
+    data = { 
         "clr_authorName": request.form["frm_authorName"]
         }
-    id = Author_cls.save(data) # creates variable... 'id' ... = that we'll use in next line (represents the ID of newly created record.... oh, and runs the "save" method from server.py)
-    # return redirect('/DojoProfile/' + str(id)) 
+    id = Author_cls.saveAuthor(data) # creates variable... 'id' ... = that we'll use in next line (represents the ID of newly created record.... oh, and runs the "save" method from server.py)
     return redirect('/') 
 
 @app.route('/authorProfile/<int:id>')
@@ -28,15 +27,15 @@ def authorProfile(id):
     }
     authorInfo = Author_cls.getOneAuthor(data)
     allBook = Book_cls.getAllBook()
-    allAuthorFavBook = Author_cls.get_allAuthorFavBook(data) 
+    authorFavBooks = Author_cls.get_authorFavBooks(data) 
+    notAuthorFavBooks = Author_cls.get_notAuthorFavBooks(data) 
     
-
     return render_template(
     "authorProfile.html" 
     , display_authorInfo = authorInfo
     , display_allBook = allBook
-    , display_allAuthorFavBook = allAuthorFavBook
-    
+    , display_authorFavBooks = authorFavBooks
+    , display_notAuthorFavBooks = notAuthorFavBooks
     )
 
 @app.route('/createAuthorFavBook/<int:author_id>', methods=["POST"])
@@ -45,10 +44,13 @@ def createAuthorFavBook(author_id):
         "clr_book_id": request.form["frm_book_id"], 
         "clr_author_id": author_id 
         }
-    # dojo_id = data.clr_dojo_id
     id = Author_cls.saveFaveOfAuthor(data) 
     # return redirect(f"/authorProfile/{data['clr_author_id']}") # this works
     return redirect(f"/authorProfile/{author_id}") # this works much cleaner!
+
+
+
+
 
 # """ route engaged by the 'edit' button on the DojoProfile.html page"""
 # @app.route('/DojoProfile/<int:id>/edit')

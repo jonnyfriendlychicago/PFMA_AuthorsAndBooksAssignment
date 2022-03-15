@@ -29,7 +29,7 @@
                     <tr>
                         <th class="studentTblHdr">Book Title</th>
                     </tr>
-                    {% for row in display_allAuthorFavBook.authorFavBookList %}
+                    {% for row in display_authorFavBooks.authorFavBookList %}
                     <tr> 
                         <td class="studentTblData">{{row.bookTitle}}</td>
                     </tr>
@@ -46,9 +46,10 @@
                         <div class="formSelectSameLine">
                             <label for="frm_book_id">Book:</label>
                             <select name="frm_book_id">
-                                {% for rec in display_allBook %}
-                                <!-- display_allBookNotFavByThisAuthor -->
-                                <option value={{rec.id}}> {{rec.bookTitle}} </option>
+                                {% for row in display_notAuthorFavBooks.notAuthorFavBookList%}
+                                <!-- display_allBook -->
+                                <!-- display_allBookNotFavByThisAuthor.notFavesByAuthorList  -->
+                                <option value={{row.id}}> {{row.bookTitle}} </option>
                                 {% endfor %}
                             </select>
                         </div>

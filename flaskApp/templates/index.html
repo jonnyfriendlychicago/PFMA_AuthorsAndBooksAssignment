@@ -33,8 +33,6 @@
                     <table class="studentTbl">  
                         {% for row in display_allAuthor %}
                         <tr> 
-                            <!-- <td class="studentTblData"> {{row.dojoName}}</td>
-                            <td class="studentTblData"><a href="/dojoProfile/{{row.id}}">View Dojo Profile</a> -->
                             <td class="studentTblData"><a href="/authorProfile/{{row.id}}">{{row.authorName}}</a>
                         </tr>
                         {% endfor %}    
@@ -48,7 +46,7 @@
                 
             </div>
         </div>   
-
+    </div>
         
         <!-- <a href="/addNewDojo" class="btn btn-secondary">Add New Dojo</a> gotta remember here that the /addNewUser is NOT a reg'ole url; it's a route from the PY server -->
 <!-- 

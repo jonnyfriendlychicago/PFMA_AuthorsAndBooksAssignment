@@ -7,8 +7,8 @@ from flaskApp.models.book_mod import Book_cls
 @app.route('/books')
 def bookHome():
     allBook = Book_cls.getAllBook()
-    allBookNotFavByThisAuthor = Book_cls.get_allBookNotFavByThisAuthor()
-    return render_template("books.html", display_allBook = allBook, display_allBookNotFavByThisAuthor = allBookNotFavByThisAuthor)
+    return render_template("books.html", display_allBook = allBook
+    )
 
 @app.route('/createBook', methods=["POST"])
 def createBook():
@@ -16,8 +16,7 @@ def createBook():
         "clr_bookTitle": request.form["frm_bookTitle"]
         , "clr_pageCount": request.form["frm_pageCount"]
         }
-    id = Book_cls.save(data) # creates variable... 'id' ... = that we'll use in next line (represents the ID of newly created record.... oh, and runs the "save" method from server.py)
-    # return redirect('/DojoProfile/' + str(id)) 
+    id = Book_cls.saveBook(data) # creates variable... 'id' ... = that we'll use in next line (represents the ID of newly created record.... oh, and runs the "save" method from server.py)
     return redirect('/books') 
 
 @app.route('/bookProfile/<int:id>')

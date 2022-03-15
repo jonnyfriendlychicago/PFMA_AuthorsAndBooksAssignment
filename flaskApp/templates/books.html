@@ -35,16 +35,12 @@
                     <table class="studentTbl">  
                         {% for row in display_allBook %}
                         <tr> 
-                            <!-- <td class="studentTblData"> {{row.dojoName}}</td>
-                            <td class="studentTblData"><a href="/dojoProfile/{{row.id}}">View Dojo Profile</a> -->
                             <td class="studentTblData"><a href="/bookProfile/{{row.id}}">{{row.bookTitle}}</a>
                         </tr>
                         {% endfor %}    
                     </table>
                 </div>
                 <div class="horizBlock">     
-                    <!-- <p><a href="/addNewNinja">Add Book</a></p> -->
-                    <!-- <p><a href="/book">Add Book</a></p> -->
                     <p><a href="/">Authors</a></p>
                 </div>
                 

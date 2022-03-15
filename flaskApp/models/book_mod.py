@@ -8,6 +8,7 @@ class Book_cls:
         self.bookTitle = data['bookTitle']
         self.pageCount = data['pageCount']
         self.FavesByAuthorList = [] # needs work in sections below
+        # self.notFavesByAuthorList = [] # needs work in sections below
 
     @classmethod 
     def getAllBook(cls):
@@ -19,17 +20,7 @@ class Book_cls:
         return bookList
 
     @classmethod 
-    def get_allBookNotFavByThisAuthor(cls):
-        q = "select * from book b where b.id not in  (select f.book_id from favorite f where f.author_id = 2); "
-        # q = "SELECT * FROM book b left join favorite f on b.id = f.book_id where f.author_id != %(clr_id)s;"
-        rez = connectToMySQL('authorBook_sch').query_db(q) 
-        bookListNew = [] 
-        for rec in rez:
-            bookListNew.append(cls(rec))
-        return bookListNew
-
-    @classmethod 
-    def save(cls, data ):
+    def saveBook(cls, data ):
         q = "INSERT INTO book (bookTitle, pageCount, createdAt, updatedAt) VALUES ( %(clr_bookTitle)s , %(clr_pageCount)s,  NOW() , NOW() );"
         return connectToMySQL('authorBook_sch').query_db(q, data )
 
@@ -45,12 +36,17 @@ class Book_cls:
         rez = connectToMySQL('authorBook_sch').query_db(q, data)
         book = cls (rez[0]) 
         for row in rez:
-            favorite_data = {
+            favorite_dataX = {
                 "id" : row['id'], 
                 "authorName" : row['authorName'], 
             }
-            book.FavesByAuthorList.append(author_mod.Author_cls(favorite_data))
+            book.FavesByAuthorList.append(author_mod.Author_cls(favorite_dataX))
         return book
+
+        # bookListNew = [] 
+        # for rec in rez:
+        #     bookListNew.append(cls(rec))
+        # return bookListNew
 
 """
 
