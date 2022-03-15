@@ -19,7 +19,7 @@
             <a href="/" >Home</a> 
             <h2>Author Profile</h2>
             <h2>ID: <span style= "color: black;">  {{display_authorInfo.id}} </span></h2>
-            <h2>DojoName: <span style= "color: black;">  {{display_authorInfo.authorName}} </span></h2>
+            <h2>Author: <span style= "color: black;">  {{display_authorInfo.authorName}} </span></h2>
         </div>
 
         <div class="formContainer02">
@@ -29,11 +29,18 @@
                     <tr>
                         <th class="studentTblHdr">Book Title</th>
                     </tr>
-                    {% for row in display_authorFavBooks.authorFavBookList %}
-                    <tr> 
+                    
+                        {% if display_authorFavBooks.authorFavBookList %}
+                            {% for row in display_authorFavBooks.authorFavBookList %} 
+                            <!--     worth confirming: above  is the object.list -->
+                    <tr>
                         <td class="studentTblData">{{row.bookTitle}}</td>
+                            {% endfor %}
+                        {% else %} 
+                            <p>nothing favorited yet!</p>    
+                        {% endif %}    
                     </tr>
-                    {% endfor %}    
+                    
                 </table>
             </div>  
         </div> 
@@ -46,9 +53,10 @@
                         <div class="formSelectSameLine">
                             <label for="frm_book_id">Book:</label>
                             <select name="frm_book_id">
-                                {% for row in display_notAuthorFavBooks.notAuthorFavBookList%}
+                                {% for row in display_notAuthorFavBook %}
                                 <!-- display_allBook -->
-                                <!-- display_allBookNotFavByThisAuthor.notFavesByAuthorList  -->
+                                <!-- display_notAuthorFavBook -->
+                                <!-- display_notAuthorFavBooks.notAuthorFavBookList  -->
                                 <option value={{row.id}}> {{row.bookTitle}} </option>
                                 {% endfor %}
                             </select>

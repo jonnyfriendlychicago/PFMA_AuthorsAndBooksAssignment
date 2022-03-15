@@ -13,12 +13,9 @@ from flaskApp.controllers import book_ctrl
 if __name__=="__main__":   # Ensure this file is being run directly and not from a different module    
     app.run(debug=True)    # Run the app in debug mode.
 
-
-
 # below commented out, moved to init.py
 # app = Flask(__name__)    # Create a new instance of the Flask class called "app"
 # app.secret_key = 'dsadfdafdfgaf' # this key can always be some junk, it doesn't matter, as long as this line is there. 
-
 
 # ...server.py
 

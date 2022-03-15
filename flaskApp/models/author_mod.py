@@ -33,11 +33,14 @@ class Author_cls:
 
     @classmethod
     def get_authorFavBooks(cls, data):
-        # q = "select * from author a left join favorite f on a.id = f.author_id left join book b on f.book_id = b.id where a.id = %(clr_id)s;"
-        q = "select * from author a join favorite f on a.id = f.author_id join book b on f.book_id = b.id where a.id = %(clr_id)s;"
+        q = "select * from author a left join favorite f on a.id = f.author_id left join book b on f.book_id = b.id where a.id = %(clr_id)s;"
+        # q = "select * from author a join favorite f on a.id = f.author_id join book b on f.book_id = b.id where a.id = %(clr_id)s;"
         results = connectToMySQL('authorBook_sch').query_db(q, data)
         authorFavObj = cls (results[0]) 
         for row in results:
+            if row['b.id'] == None: 
+                break
+                # return authorFavObj
             favorite_data = {
                 "id" : row['b.id'], 
                 "bookTitle" : row['bookTitle'], 
@@ -48,20 +51,20 @@ class Author_cls:
 
     """ trying it again... below is boilerplate from above, with edits"""
 
-    @classmethod
-    def get_notAuthorFavBooks(cls, data):
-        # q = "select * from author a join favorite f on a.id = f.author_id join book b on f.book_id = b.id where a.id = %(clr_id)s;"
-        q = "select * from book b where b.id not in (select f.book_id from favorite f where f.author_id = %(clr_id)s);"
-        results = connectToMySQL('authorBook_sch').query_db(q, data)
-        authorFavObj2 = cls (results[0]) 
-        for row in results:
-            favorite_dataX = {
-                "id" : row['b.id'], 
-                "bookTitle" : row['bookTitle'], 
-                "pageCount" : row['pageCount'], 
-            }
-            authorFavObj2.notAuthorFavBookList.append(book_mod.Book_cls(favorite_dataX))
-        return authorFavObj2
+    # @classmethod
+    # def get_notAuthorFavBooks(cls, data):
+    #     # q = "select * from author a join favorite f on a.id = f.author_id join book b on f.book_id = b.id where a.id = %(clr_id)s;"
+    #     q = "select * from book b where b.id not in (select f.book_id from favorite f where f.author_id = %(clr_id)s);"
+    #     results = connectToMySQL('authorBook_sch').query_db(q, data)
+    #     authorFavObj2 = cls (results[0]) 
+    #     for row in results:
+    #         favorite_dataX = {
+    #             "id" : row['b.id'], 
+    #             "bookTitle" : row['bookTitle'], 
+    #             "pageCount" : row['pageCount'], 
+    #         }
+    #         authorFavObj2.notAuthorFavBookList.append(book_mod.Book_cls(favorite_dataX))
+    #     return authorFavObj2
 
 
 

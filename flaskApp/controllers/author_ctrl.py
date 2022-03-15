@@ -28,14 +28,15 @@ def authorProfile(id):
     authorInfo = Author_cls.getOneAuthor(data)
     allBook = Book_cls.getAllBook()
     authorFavBooks = Author_cls.get_authorFavBooks(data) 
-    notAuthorFavBooks = Author_cls.get_notAuthorFavBooks(data) 
+    # notAuthorFavBooks = Author_cls.get_notAuthorFavBooks(data) 
+    notAuthorFavBook = Book_cls.get_notAuthorFavBook(data) 
     
     return render_template(
     "authorProfile.html" 
     , display_authorInfo = authorInfo
     , display_allBook = allBook
     , display_authorFavBooks = authorFavBooks
-    , display_notAuthorFavBooks = notAuthorFavBooks
+    , display_notAuthorFavBook = notAuthorFavBook
     )
 
 @app.route('/createAuthorFavBook/<int:author_id>', methods=["POST"])
