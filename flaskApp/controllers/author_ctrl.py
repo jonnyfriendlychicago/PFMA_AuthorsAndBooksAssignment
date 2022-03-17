@@ -30,7 +30,9 @@ def authorProfile(id):
     authorFavBooks = Author_cls.get_authorFavBooks(data) 
     # notAuthorFavBooks = Author_cls.get_notAuthorFavBooks(data) 
     notAuthorFavBook = Book_cls.get_notAuthorFavBook(data) 
-    
+    print("notAuthorFavBook:")
+    print(notAuthorFavBook)
+
     return render_template(
     "authorProfile.html" 
     , display_authorInfo = authorInfo

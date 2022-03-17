@@ -19,6 +19,15 @@ class Book_cls:
             bookList.append(cls(rec))
         return bookList
 
+    @classmethod
+    def get_notAuthorFavBook(cls, data):
+        q = "select * from book b where b.id not in (select f.book_id from favorite f where f.author_id = %(clr_id)s);"
+        results = connectToMySQL('authorBook_sch').query_db(q, data)
+        notAuthorFavbookList = [] 
+        for rec in results:
+            notAuthorFavbookList.append(cls(rec))
+        return notAuthorFavbookList
+
     @classmethod 
     def saveBook(cls, data ):
         q = "INSERT INTO book (bookTitle, pageCount, createdAt, updatedAt) VALUES ( %(clr_bookTitle)s , %(clr_pageCount)s,  NOW() , NOW() );"
@@ -45,26 +54,6 @@ class Book_cls:
 
 # trying to make magic happen with Caden help.  Caden suggests that this is DEF on the right track now, so embrace this and let's try to make it work. 
 
-    @classmethod
-    def get_notAuthorFavBook(cls, data):
-        # q = "select * from author a join favorite f on a.id = f.author_id join book b on f.book_id = b.id where a.id = %(clr_id)s;"
-        q = "select * from book b where b.id not in (select f.book_id from favorite f where f.author_id = %(clr_id)s);"
-        results = connectToMySQL('authorBook_sch').query_db(q, data)
-
-
-        # authorFavObj2 = cls (results[0]) 
-        # for row in results:
-        #     favorite_dataX = {
-        #         "id" : row['b.id'], 
-        #         "bookTitle" : row['bookTitle'], 
-        #         "pageCount" : row['pageCount'], 
-        #     }
-        #     authorFavObj2.notAuthorFavBookList.append(book_mod.Book_cls(favorite_dataX))
-
-        notAuthorFavbookList = [] 
-        for rec in results:
-            notAuthorFavbookList.append(cls(rec))
-        return notAuthorFavbookList
 
 
 

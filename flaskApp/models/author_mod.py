@@ -34,13 +34,11 @@ class Author_cls:
     @classmethod
     def get_authorFavBooks(cls, data):
         q = "select * from author a left join favorite f on a.id = f.author_id left join book b on f.book_id = b.id where a.id = %(clr_id)s;"
-        # q = "select * from author a join favorite f on a.id = f.author_id join book b on f.book_id = b.id where a.id = %(clr_id)s;"
         results = connectToMySQL('authorBook_sch').query_db(q, data)
         authorFavObj = cls (results[0]) 
         for row in results:
-            if row['b.id'] == None: 
-                break
-                # return authorFavObj
+            if row['b.id'] == None: # this line and line below likely overkill.  prob beneficial for bigger programming.
+                break               # consider using this on the userBookings on the inFlight program
             favorite_data = {
                 "id" : row['b.id'], 
                 "bookTitle" : row['bookTitle'], 
